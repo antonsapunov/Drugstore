@@ -1,6 +1,5 @@
 package drugstore.dao
 
-import drugstore.entity.Drug
 
 interface Dao<T> {
 

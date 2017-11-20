@@ -9,6 +9,7 @@ public class Drug {
 
     private int id;
     private String name;
+//    private Provider provider;
     private int providerId;
     private int typeId;
     private int activeId;
@@ -22,6 +23,7 @@ public class Drug {
         id = drug.getId();
         name = drug.getName();
         providerId = drug.getProviderId();
+//        provider = drug.getProvider();
         typeId = drug.getTypeId();
         activeId = drug.getActiveId();
         price = drug.getPrice();
@@ -109,5 +111,19 @@ public class Drug {
     public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
     }
+
+
+//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "provider",
+//            joinColumns = @JoinColumn(name = "brand")
+//    )
+//    public Provider getProvider() {
+//        return provider;
+//    }
+//
+//    public void setProvider(Provider provider) {
+//        this.provider = provider;
+//    }
 
 }
