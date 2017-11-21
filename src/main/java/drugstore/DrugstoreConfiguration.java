@@ -1,14 +1,8 @@
 package drugstore;
 
 import drugstore.dao.Dao;
-import drugstore.entity.ActiveElement;
-import drugstore.entity.Drug;
-import drugstore.entity.Provider;
-import drugstore.entity.Type;
-import drugstore.repository.ActiveElementsRepository;
-import drugstore.repository.DrugsRepository;
-import drugstore.repository.ProvidersRepository;
-import drugstore.repository.TypesRepository;
+import drugstore.entity.*;
+import drugstore.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,5 +28,10 @@ public class DrugstoreConfiguration {
     @Bean
     public TypesRepository typesRepository(Dao<Type> typeDao) {
         return new TypesRepository(typeDao);
+    }
+
+    @Bean
+    public DrugstoresRepository drugstoresRepository(Dao<Drugstore> grugstoreDao) {
+        return new DrugstoresRepository(grugstoreDao);
     }
 }

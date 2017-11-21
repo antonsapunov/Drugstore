@@ -1,9 +1,6 @@
 package drugstore.dao
 
-import drugstore.entity.ActiveElement
-import drugstore.entity.Drug
-import drugstore.entity.Provider
-import drugstore.entity.Type
+import drugstore.entity.*
 import org.springframework.stereotype.Repository
 import javax.persistence.EntityManager
 
@@ -49,5 +46,14 @@ open class TypeDaoImpl(private val manager: EntityManager) : BaseDao<Type>(manag
     override fun getAll() = manager.createQuery("FROM Type", Type::class.java).resultList
 
     override fun getById(id: Int) = manager.find(Type::class.java, id)
+
+}
+
+@Repository
+open class DrugstoreDaoImpl(private val manager: EntityManager) : BaseDao<Drugstore>(manager), Dao<Drugstore> {
+
+    override fun getAll() = manager.createQuery("FROM Drugstore", Drugstore::class.java).resultList
+
+    override fun getById(id: Int) = manager.find(Drugstore::class.java, id)
 
 }

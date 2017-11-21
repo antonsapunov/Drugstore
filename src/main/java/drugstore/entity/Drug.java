@@ -1,7 +1,6 @@
 package drugstore.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "drugs", schema = "pharmacy")
@@ -9,26 +8,18 @@ public class Drug {
 
     private int id;
     private String name;
-//    private Provider provider;
-    private int providerId;
-    private int typeId;
-    private int activeId;
-    private double price;
-    private Date dateOfProduction;
-    private Date expiryDate;
+    private Provider provider;
+    private Type type;
+    private ActiveElement activeElement;
 
     public Drug() {}
 
     public Drug(Drug drug) {
         id = drug.getId();
         name = drug.getName();
-        providerId = drug.getProviderId();
-//        provider = drug.getProvider();
-        typeId = drug.getTypeId();
-        activeId = drug.getActiveId();
-        price = drug.getPrice();
-        dateOfProduction = drug.getDateOfProduction();
-        expiryDate = drug.getExpiryDate();
+        provider = drug.getProvider();
+        type = drug.getType();
+        activeElement = drug.getActiveElement();
     }
 
     @Id
@@ -52,78 +43,33 @@ public class Drug {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "provider_id")
-    public int getProviderId() {
-        return providerId;
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setProviderId(int providerId) {
-        this.providerId = providerId;
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
-    @Basic
-    @Column(name = "type_id")
-    public int getTypeId() {
-        return typeId;
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    public Type getType() {
+        return type;
     }
 
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setType(Type type) {
+        this.type = type;
     }
 
-    @Basic
-    @Column(name = "active_id")
-    public int getActiveId() {
-        return activeId;
+    @ManyToOne
+    @JoinColumn(name = "active_id")
+    public ActiveElement getActiveElement() {
+        return activeElement;
     }
 
-    public void setActiveId(int activeId) {
-        this.activeId = activeId;
+    public void setActiveElement(ActiveElement activeElement) {
+        this.activeElement = activeElement;
     }
-
-    @Basic
-    @Column(name = "price")
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Basic
-    @Column(name = "date_of_production")
-    public Date getDateOfProduction() {
-        return dateOfProduction;
-    }
-
-    public void setDateOfProduction(Date dateOfProduction) {
-        this.dateOfProduction = dateOfProduction;
-    }
-
-    @Basic
-    @Column(name = "expiry_date")
-    public Date getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-
-//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinTable(
-//            name = "provider",
-//            joinColumns = @JoinColumn(name = "brand")
-//    )
-//    public Provider getProvider() {
-//        return provider;
-//    }
-//
-//    public void setProvider(Provider provider) {
-//        this.provider = provider;
-//    }
-
 }
