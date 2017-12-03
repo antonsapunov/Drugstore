@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
--- Host: 127.0.0.1    Database: pharmacy
+-- Host: localhost    Database: pharmacy
 -- ------------------------------------------------------
--- Server version	5.7.16-log
+-- Server version	5.7.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `drugstores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `drugstores` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `drugstore` varchar(128) NOT NULL,
   `address` varchar(300) NOT NULL,
   `phone_number` char(50) NOT NULL,
   `working_hours` varchar(100) NOT NULL,
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `phone_number_UNIQUE` (`phone_number`),
   UNIQUE KEY `address_UNIQUE` (`address`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-21 13:03:50
+-- Dump completed on 2017-12-03 16:06:22
