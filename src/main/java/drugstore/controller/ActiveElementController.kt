@@ -14,7 +14,7 @@ class ActiveElementController(private val activeElementsRepository: ActiveElemen
     @GetMapping(value = "/getAll")
     fun getAllActiveElements() = activeElementsRepository.getAllActiveElements()
 
-    @GetMapping(value = "/filter")
+    @GetMapping(value = "/get")
     fun filter(@RequestParam(name = "id", required = true) id: Int) = activeElementsRepository.getById(id)
 
 }

@@ -13,6 +13,6 @@ class TypeController(private val typesRepository: TypesRepository) {
     @GetMapping(value = "/getAll")
     fun getAllTypes() = typesRepository.getAllTypes()
 
-    @GetMapping(value = "/filter")
+    @GetMapping(value = "/get")
     fun filter(@RequestParam(name = "id", required = true) id: Int) = typesRepository.getById(id)
 }

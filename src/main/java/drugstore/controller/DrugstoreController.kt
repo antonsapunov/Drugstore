@@ -13,6 +13,6 @@ class DrugstoreController(private val drugstoreRepository: DrugstoresRepository)
     @GetMapping(value = "/getAll")
     fun getAllDrugstores() = drugstoreRepository.getAllDrugstores()
 
-    @GetMapping(value = "/filter")
+    @GetMapping(value = "/get")
     fun filter(@RequestParam(name = "id", required = true) id: Int) = drugstoreRepository.getById(id)
 }

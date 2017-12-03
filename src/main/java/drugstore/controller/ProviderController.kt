@@ -13,6 +13,6 @@ class ProviderController(private val providersRepository: ProvidersRepository) {
     @GetMapping(value = "/getAll")
     fun getAllProviders() = providersRepository.getAllProviders()
 
-    @GetMapping(value = "/filter")
+    @GetMapping(value = "/get")
     fun filter(@RequestParam(name = "id", required = true) id: Int) = providersRepository.getById(id)
 }
