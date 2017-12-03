@@ -3,6 +3,7 @@ package drugstore.dao
 import drugstore.entity.*
 import org.springframework.stereotype.Repository
 import javax.persistence.EntityManager
+import javax.transaction.Transactional
 
 abstract class BaseDao<T>(private val manager: EntityManager) : Dao<T> {
 
@@ -10,6 +11,7 @@ abstract class BaseDao<T>(private val manager: EntityManager) : Dao<T> {
 
     override fun update(entity: T): T = manager.merge(entity)
 
+    @Transactional
     override fun delete(id: Int) = manager.remove(getById(id))
 }
 
