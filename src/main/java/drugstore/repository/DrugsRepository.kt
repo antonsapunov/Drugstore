@@ -12,4 +12,12 @@ class DrugsRepository(private val drugsDao: Dao<Drug>) {
     fun deleteById(id: Int) {
         drugsDao.delete(id)
     }
+
+    fun addDrug(drug: Drug) {
+        drugsDao.add(drug)
+    }
+
+    fun updateDrug(drug: Drug) {
+        drugsDao.update(drug)
+    }
 }

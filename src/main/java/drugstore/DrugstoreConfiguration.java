@@ -1,5 +1,6 @@
 package drugstore;
 
+import drugstore.dao.AmountOfDrugsDao;
 import drugstore.dao.Dao;
 import drugstore.entity.*;
 import drugstore.repository.*;
@@ -31,7 +32,12 @@ public class DrugstoreConfiguration {
     }
 
     @Bean
-    public DrugstoresRepository drugstoresRepository(Dao<Drugstore> grugstoreDao) {
-        return new DrugstoresRepository(grugstoreDao);
+    public DrugstoresRepository drugstoresRepository(Dao<Drugstore> drugstoreDao) {
+        return new DrugstoresRepository(drugstoreDao);
+    }
+
+    @Bean
+    public AmountOfDrugsRepository amountOfDrugsRepository(AmountOfDrugsDao amountOfDrugsDao) {
+        return new AmountOfDrugsRepository(amountOfDrugsDao);
     }
 }

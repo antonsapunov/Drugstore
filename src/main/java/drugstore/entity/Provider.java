@@ -11,12 +11,16 @@ public class Provider {
     public Provider() {}
 
     public Provider(Provider provider) {
-        id = provider.getId();
-        brand = provider.getBrand();
+        this.id = provider.getId();
+        this.brand = provider.getBrand();
+    }
+
+    public Provider(String brand) {
+        this.brand = brand;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;

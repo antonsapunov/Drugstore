@@ -1,5 +1,7 @@
 package drugstore.dao
 
+import drugstore.entity.AmountOfDrugs
+
 
 interface Dao<T> {
 
@@ -12,4 +14,8 @@ interface Dao<T> {
     fun delete(id: Int)
 
     fun getAll(): List<T>
+}
+
+interface AmountOfDrugsDao: Dao<AmountOfDrugs> {
+    fun getByDrug(id: Int): List<AmountOfDrugs>
 }

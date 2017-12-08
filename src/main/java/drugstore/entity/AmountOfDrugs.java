@@ -1,55 +1,75 @@
 package drugstore.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 
-//@Entity
-//@Table(name = "amount_of_drugs", schema = "pharmacy")
+@Entity
+@Table(name = "amount_of_drugs", schema = "pharmacy")
 public class AmountOfDrugs {
+    @EmbeddedId
+    private AmountOfDrugsPK id;
 
-    private int drugstoreId;
-    private int drugId;
-    private int count;
-    private double price;
+    @ManyToOne
+    @MapsId("drugstoreId")
+    private Drugstore drugstore;
 
+    @ManyToOne
+    @MapsId("drugId")
+    private Drug drug;
+
+    private short count;
+    private BigDecimal price;
+
+    public AmountOfDrugs() {}
 
     public AmountOfDrugs(AmountOfDrugs amountOfDrugs) {
-        this.drugstoreId = amountOfDrugs.getDrugstoreId();
-        this.drugId = amountOfDrugs.getDrugId();
+        this.drugstore = amountOfDrugs.getDrugstore();
+        this.drug = amountOfDrugs.getDrug();
         this.count = amountOfDrugs.getCount();
         this.price = amountOfDrugs.getPrice();
     }
 
-    public int getDrugstoreId() {
-        return drugstoreId;
+    public AmountOfDrugs(Drugstore drugstore, Drug drug, short count, BigDecimal price) {
+        this.drugstore = drugstore;
+        this.drug = drug;
+        this.count = count;
+        this.price = price;
     }
 
-    public void setDrugstoreId(int drugstoreId) {
-        this.drugstoreId = drugstoreId;
+    public Drugstore getDrugstore() {
+        return drugstore;
     }
 
-    public int getDrugId() {
-        return drugId;
+    public void setDrugstore(Drugstore drugstore) {
+        this.drugstore = drugstore;
     }
 
-    public void setDrugId(int drugId) {
-        this.drugId = drugId;
+    public Drug getDrug() {
+        return drug;
     }
 
-    public int getCount() {
+    public void setDrug(Drug drug) {
+        this.drug = drug;
+    }
+
+    @Basic
+    @Column(name = "count")
+    public short getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(short count) {
         this.count = count;
     }
 
-    public double getPrice() {
+    @Basic
+    @Column(name = "price")
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

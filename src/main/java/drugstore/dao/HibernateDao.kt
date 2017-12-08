@@ -7,8 +7,10 @@ import javax.transaction.Transactional
 
 abstract class BaseDao<T>(private val manager: EntityManager) : Dao<T> {
 
+    @Transactional
     override fun add(entity: T) = manager.persist(entity)
 
+    @Transactional
     override fun update(entity: T): T = manager.merge(entity)
 
     @Transactional
@@ -57,5 +59,22 @@ open class DrugstoreDaoImpl(private val manager: EntityManager) : BaseDao<Drugst
     override fun getAll() = manager.createQuery("FROM Drugstore", Drugstore::class.java).resultList
 
     override fun getById(id: Int) = manager.find(Drugstore::class.java, id)
+
+}
+
+@Repository
+open class AmoutOfDrugsDaoImpl(private val manager: EntityManager) : BaseDao<AmountOfDrugs>(manager), AmountOfDrugsDao {
+
+    override fun getAll() = manager.createQuery("FROM AmountOfDrugs", AmountOfDrugs::class.java).resultList
+
+    override fun getById(id: Int) = manager.find(AmountOfDrugs::class.java, id)
+
+    override fun getByDrug(id: Int): List<AmountOfDrugs> {
+        val query = manager.createQuery("From AmountOfDrugs a where a.drug.id = :id",
+                AmountOfDrugs::class.java)
+        query.setParameter("id", id)
+        println(query.resultList.size)
+        return query.resultList
+    }
 
 }

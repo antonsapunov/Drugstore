@@ -9,4 +9,8 @@ class ActiveElementsRepository(private val activeElementsDao: Dao<ActiveElement>
 
     fun getById(id: Int) = ActiveElement(activeElementsDao.getById(id))
 
+    fun addActiveElement(activeElement: ActiveElement) {
+        activeElementsDao.add(activeElement)
+    }
+
 }

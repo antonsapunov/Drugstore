@@ -22,8 +22,18 @@ public class Drug {
         activeElement = drug.getActiveElement();
     }
 
+    public Drug(String name, int provider_id, int type_id, int activeElement_id) {
+        this.name = name;
+        this.provider = new Provider();
+        this.provider.setId(provider_id);
+        this.type = new Type();
+        this.type.setId(type_id);
+        this.activeElement = new ActiveElement();
+        this.activeElement.setId(activeElement_id);
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;

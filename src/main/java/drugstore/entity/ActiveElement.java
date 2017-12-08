@@ -7,17 +7,21 @@ import javax.persistence.*;
 public class ActiveElement {
 
     private int id;
-    private String activeelement;
+    private String activeElement;
 
     public ActiveElement() {}
 
     public ActiveElement(ActiveElement activeElement) {
-        id = activeElement.getId();
-        activeelement = activeElement.getActiveelement();
+        this.id = activeElement.getId();
+        this.activeElement = activeElement.getActiveElement();
+    }
+
+    public ActiveElement(String activeElement) {
+        this.activeElement = activeElement;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -29,11 +33,11 @@ public class ActiveElement {
 
     @Basic
     @Column(name = "activeelement")
-    public String getActiveelement() {
-        return activeelement;
+    public String getActiveElement() {
+        return activeElement;
     }
 
-    public void setActiveelement(String activeelement) {
-        this.activeelement = activeelement;
+    public void setActiveElement(String activeElement) {
+        this.activeElement = activeElement;
     }
 }
